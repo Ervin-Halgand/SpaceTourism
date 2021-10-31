@@ -8,10 +8,12 @@ export default function Home() {
         </h1>
 
         <p className="description">
-          Get started by editing <code>pages/index.js</code>
+          Get started by editing <code>pages/destination.js</code>
         </p>
 
       </main>
+
+
 
       <style jsx>{`
         .container {

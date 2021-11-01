@@ -9,7 +9,7 @@ import useWindowDimensions from "./useWindowDimensions";
 const Header = () => {
     const router = useRouter();
     const navRef = useRef();
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
     const { width, height } = useWindowDimensions();
 
     useEffect(() => {
@@ -42,22 +42,22 @@ const Header = () => {
             <button className={style.hamburger__handler} onClick={() => setIsOpen(!isOpen)}>
                 <div style={{ opacity: isOpen ? "0" : "1", visibility: isOpen ? "hidden" : "visible" }}>
                     <Image
-                        src="/assets/shared/icon-close.svg"
-                        width="19"
-                        height="19"
-                        alt="logo"
-                    />
-                </div>
-                <div style={{ opacity: isOpen ? "1" : "0", visibility: isOpen ? "visible" : "hidden" }}>
-                    <Image
                         src="/assets/shared/icon-hamburger.svg"
                         width="24"
                         height="21"
                         alt="logo"
                     />
                 </div>
+                <div style={{ opacity: isOpen ? "1" : "0", visibility: isOpen ? "visible" : "hidden" }}>
+                    <Image
+                        src="/assets/shared/icon-close.svg"
+                        width="19"
+                        height="19"
+                        alt="logo"
+                    />
+                </div>
             </button>
-            <nav className={style.nav} ref={navRef} style={{ transform: (isOpen && width < 480) && "translate3d(100%,0,0)" }}>
+            <nav className={style.nav} ref={navRef} style={{ transform: (isOpen && width < 480) && "translate3d(0,0,0)" }}>
                 <Link href="/">
                     <a className={router.pathname === "/" ? style.is__active : ""}><span>00</span>home</a>
                 </Link>

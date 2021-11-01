@@ -9,6 +9,7 @@
     align-items: center;
     font-family: 'Barlow Condensed', sans-serif;
     overflow: hidden;
+    z-index: 10000000;
 }
 
 .nav {
@@ -74,8 +75,8 @@
 .nav__indicator {
     position: absolute;
     left: 0;
-    bottom: 3px;
-    transition: .4s;
+    bottom: 2px;
+    transition: .4s ease;
     height: 3px;
     width: 50px;
     z-index: 1;
@@ -156,6 +157,8 @@
     .header {
         padding-right: 24px;
         overflow: visible;
+        height: inherit;
+        margin-top: 20px;
     }
     .nav {
         position: fixed;
@@ -186,6 +189,7 @@
     .hamburger__handler {
         display: block;
         z-index: 2;
+        padding-bottom: 20px;
     }
     .nav>a::after {
         display: none;

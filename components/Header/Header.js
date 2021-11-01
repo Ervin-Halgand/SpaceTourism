@@ -22,6 +22,7 @@ const Header = () => {
                 navRef.current.children[navRef.current.children.length - 1].style.right = "0";
                 navRef.current.children[navRef.current.children.length - 1].style.width = "4px";
             } else {
+                navRef.current.children[navRef.current.children.length - 1].style.right = "inherit";
                 navRef.current.children[navRef.current.children.length - 1].style.left = `${element.offsetLeft}px`;
                 navRef.current.children[navRef.current.children.length - 1].style.width = `${element.offsetWidth}px`
                 navRef.current.children[navRef.current.children.length - 1].style.top = "inherit"

@@ -4,6 +4,7 @@ import style from "../pagesStyles/home.module.css"
 const Home = () => {
   return (
     <>
+      <div className={style.main__background} alt="background"></div>
       <div className={style.container}>
         <section className={style.container__left}>
           <h1>SO, YOU WANT TO TRAVEL TO<br></br><span>SPACE</span></h1>

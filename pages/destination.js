@@ -1,7 +1,7 @@
 export default function Home() {
   return (
-    <div className="container">
-
+    <div>
+      <div style={{position: "fixed", top: "0",zIndex:"-1", width: "100vw", height: "100vh", backgroundColor: "blue"}}></div>
       <main>
         <h1 className="title">
           Welcome to <a href="https://nextjs.org">Next.js!</a>

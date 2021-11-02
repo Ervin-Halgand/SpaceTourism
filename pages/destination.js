@@ -20,15 +20,19 @@ const Destination = () => {
         </h1>
         <section className={style.content__left}>
           <div className={style.heading__image__handler} style={{ opacity: animate && "0" }}>
-            <Image
-              src={content[content.findIndex(item => item.name === activePlanete)].images.webp}
-              alt="Picture of the author"
+            {content.map((item, i) => <Image
+              className={item.name !== activePlanete ? style.opacity__0 : ""}
+              key={i}
+              src={item.images.webp}
+              alt="planete"
               width={445}
-              height={445} />
+              height={445}
+              priority={true}
+            />)}
           </div>
         </section>
         <section className={style.content__right}>
-          <div className={style.content__right__selector}>{content.map(item => <button onClick={() => animateChangingData(item.name)}
+          <div className={style.content__right__selector}>{content.map((item, i) => <button key={i} onClick={() => animateChangingData(item.name)}
             style={{ color: item.name == activePlanete && "white" }}>{item.name}<div className={style.content__right__selector__active} style={{ opacity: item.name == activePlanete && "1" }}></div></button>)}</div>
           <section className={style.content__right__info}>
             <h3 className={style.content__right__title} style={{ opacity: animate && "0" }}>{content[content.findIndex(item => item.name === activePlanete)].name}</h3>

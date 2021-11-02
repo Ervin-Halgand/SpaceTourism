@@ -46,6 +46,8 @@ const Layout = ({ children }) => {
             button {
                 border: none;
                 font-family: Bellefair, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+                background: transparent;
+                cursor: pointer;
             }
             a {
                 text-decoration: none;

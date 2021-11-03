@@ -1,7 +1,7 @@
 import content from '../data/destination.json';
 import style from '../pagesStyles/destination.module.css'
 import Image from 'next/image'
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const Destination = () => {
   const [activePlanete, setActivePlanete] = useState("Moon");

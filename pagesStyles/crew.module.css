@@ -1,0 +1,199 @@
+.content {
+    display: flex;
+    color: white;
+    margin-top: 76px;
+    align-items: flex-end;
+}
+
+.main__background {
+    top: 0;
+    left: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-image: url("/assets/crew/background-crew-desktop.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.content__left {
+    font-family: "Bellefair";
+    font-weight: 400;
+    position: relative;
+    margin-left: 166px;
+    margin-top: 188px;
+    min-height: 460px;
+}
+
+.content__left__name, .content__left__role {
+    text-transform: uppercase;
+}
+
+.content__left__name, .content__left__role, .content__left__desc, .content__right__image {
+    transition: opacity .4s ease;
+}
+
+.content__left__role {
+    font-size: 32px;
+    opacity: .5042;
+    margin-bottom: 15px;
+}
+
+.content__left__name {
+    margin-bottom: 27px;
+    font-size: 56px;
+}
+
+.content__left__desc {
+    max-width: 34.852%;
+    line-height: 32px;
+    font-family: "Barlow";
+    color: #D0D6F9;
+    font-size: 18px;
+}
+
+.content__right {
+    position: fixed;
+    bottom: 0px;
+    right: 9.5%;
+}
+
+.content__left__selector {
+    position: absolute;
+    display: flex;
+    bottom: 53px;
+}
+
+.content__left__selector>button {
+    margin-left: 24px;
+}
+
+.content__left__selector>button:first-child {
+    margin-left: 0px;
+}
+
+.content__left__selector__button {
+    width: 15px;
+    height: 15px;
+    background-color: white;
+    border-radius: 50%;
+    opacity: .1744;
+    transition: opacity .4s ease;
+}
+
+.content__left__selector__button:hover {
+    opacity: .5001;
+}
+
+.content__left__selector__button__active, .content__left__selector__button__active:hover {
+    opacity: 1;
+}
+
+@media screen and (max-width: 1292px) {
+    .main__background {
+        background-image: url("/assets/crew/background-crew-tablet.jpg");
+    }
+    .content {
+        display: flex;
+        color: white;
+        margin-top: 40px;
+    }
+    .heading {
+        left: 38.5px;
+        font-size: 20px;
+        letter-spacing: 3.38px;
+    }
+    .content__left {
+        margin-left: 0;
+        margin-top: 84px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .content__left__name {
+        font-size: 40px;
+        margin-bottom: 8px;
+    }
+    .content__left__role {
+        font-size: 24px;
+        margin-bottom: 16px;
+    }
+    .content__left__desc {
+        font-size: 16px;
+        line-height: 28px;
+        max-width: 458px;
+        text-align: center;
+    }
+    .content__left__selector {
+        bottom: 223px;
+    }
+    .content__right {
+        right: inherit;
+        left: 50%;
+        transform: translate3d(-50%, 0, 0);
+        height: 532px;
+        width: fit-content;
+        bottom: -5px;
+    }
+    .content__right__image>img {
+        width: 100%;
+        height: 100%;
+    }
+    .content__main {
+        width: 100vw;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .main__background {
+        background-image: url("/assets/crew/background-crew-mobile.jpg");
+    }
+    .heading {
+        font-size: 16px;
+        left: 0;
+    }
+    .content {
+        margin-top: 20px;
+    }
+    .content__main {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    .content__right {
+        transform: inherit;
+        position: static;
+        width: 327px;
+        height: 223px;
+        margin-top: 51px;
+    }
+    .content__right__image>img {
+        object-fit: contain;
+        border-bottom: 1px solid #383B4B;
+    }
+    .content__left {
+        min-height: inherit;
+        margin-top: 74px;
+    }
+    .content__left__selector {
+        top: -42px;
+        bottom: inherit;
+    }
+    .content__left__selector__button {
+        width: 10px;
+        height: 10px;
+    }
+    .content__left__name {
+        font-size: 24px;
+        margin-bottom: 16px;
+    }
+    .content__left__role {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+    .content__left__desc {
+        font-size: 15px;
+        line-height: 25px;
+        max-width: 327px;
+    }
+}

@@ -1,165 +1,77 @@
-export default function Home() {
+import destination from "../pagesStyles/destination.module.css"
+import style from "../pagesStyles/crew.module.css"
+import content from "../data/crew.json"
+import Image from 'next/image'
+import { useState } from "react"
+
+const Crew = () => {
+  const [activeName, setActiveName] = useState(0);
+  const [animate, setAnimate] = useState(false);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+  const handleTouchEnd = () => {
+    if (touchStart - touchEnd > 50) {
+      if (activeName === 0)
+        animateChangingData(3);
+      else
+        animateChangingData(activeName - 1);
+    }
+    if (touchStart - touchEnd < 50) {
+      if (activeName === 3)
+        animateChangingData(0);
+      else
+        animateChangingData(activeName + 1);
+    }
+  }
+  const animateChangingData = (i) => {
+    setAnimate(true);
+    setTimeout(() => { setActiveName(i); setAnimate(false); }, 500);
+  }
+
   return (
-    <div className="container">
-
-      <main>
-        <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className="description">
-          Get started by editing <code>pages/destination.js</code>
-        </p>
-
-      </main>
-
-
-
-      <style jsx>{`
-        .container {
-          min-height: 100vh;
-          padding: 0 0.5rem;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        main {
-          padding: 5rem 0;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer {
-          width: 100%;
-          height: 100px;
-          border-top: 1px solid #eaeaea;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer img {
-          margin-left: 0.5rem;
-        }
-
-        footer a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
-
-        .title a {
-          color: #0070f3;
-          text-decoration: none;
-        }
-
-        .title a:hover,
-        .title a:focus,
-        .title a:active {
-          text-decoration: underline;
-        }
-
-        .title {
-          margin: 0;
-          line-height: 1.15;
-          font-size: 4rem;
-        }
-
-        .title,
-        .description {
-          text-align: center;
-        }
-
-        .description {
-          line-height: 1.5;
-          font-size: 1.5rem;
-        }
-
-        code {
-          background: #fafafa;
-          border-radius: 5px;
-          padding: 0.75rem;
-          font-size: 1.1rem;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-        }
-
-        .grid {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-wrap: wrap;
-
-          max-width: 800px;
-          margin-top: 3rem;
-        }
-
-        .card {
-          margin: 1rem;
-          flex-basis: 45%;
-          padding: 1.5rem;
-          text-align: left;
-          color: inherit;
-          text-decoration: none;
-          border: 1px solid #eaeaea;
-          border-radius: 10px;
-          transition: color 0.15s ease, border-color 0.15s ease;
-        }
-
-        .card:hover,
-        .card:focus,
-        .card:active {
-          color: #0070f3;
-          border-color: #0070f3;
-        }
-
-        .card h3 {
-          margin: 0 0 1rem 0;
-          font-size: 1.5rem;
-        }
-
-        .card p {
-          margin: 0;
-          font-size: 1.25rem;
-          line-height: 1.5;
-        }
-
-        .logo {
-          height: 1em;
-        }
-
-        @media (max-width: 600px) {
-          .grid {
-            width: 100%;
-            flex-direction: column;
-          }
-        }
-      `}</style>
-
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
-        }
-
-        * {
-          box-sizing: border-box;
-        }
-      `}</style>
-    </div>
+    <>
+      <div className={style.main__background} alt="background"></div>
+      <div className={style.content}>
+        <div style={{ position: "relative" }}>
+          <h1 className={`${destination.heading} ${style.heading}`}>
+            <span className={destination.heading__number}>02</span>
+            <span className={destination.heading__text}>Meet your crew</span>
+          </h1>
+          <div className={style.content__main}>
+            <section className={style.content__left}>
+              <div style={{ opacity: animate && "0" }} className={style.content__left__role}>{content[activeName].role}</div>
+              <div style={{ opacity: animate && "0" }} className={style.content__left__name}>{content[activeName].name}</div>
+              <p style={{ opacity: animate && "0" }} className={style.content__left__desc}>{content[activeName].bio}</p>
+              <div className={style.content__left__selector}>{content.map((item, i) =>
+                <button className={`${style.content__left__selector__button} ${i === activeName && style.content__left__selector__button__active}`} key={i} onClick={() => animateChangingData(i)}></button>
+              )}</div>
+            </section>
+            <section
+              onTouchStart={e => setTouchStart(e.targetTouches[0].clientX)}
+              onTouchMove={e => setTouchEnd(e.targetTouches[0].clientX)}
+              onTouchEnd={() => handleTouchEnd()}
+              style={{ opacity: animate && "0" }} className={`${style.content__right} ${style.content__right__image}`}>
+              <img src={content[activeName].images.webp} />
+              {/* <Image
+              src=""
+              alt="planete"
+              layout="responsive"
+              priority={true}
+            /> */}
+              {/* {content.map((item, i) => <Image
+              className={item.name !== activePlanete ? style.opacity__0 : ""}
+              key={i}
+              src={item.images.webp}
+              alt="planete"
+              width={445}
+              height={445}
+              priority={true}
+            />)} */}
+            </section>
+          </div>
+        </div>
+      </div>
+    </>
   )
 }
+export default Crew;

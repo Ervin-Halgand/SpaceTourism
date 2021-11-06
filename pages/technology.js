@@ -1,165 +1,66 @@
-export default function Home() {
+import destination from "../pagesStyles/destination.module.css"
+import style from "../pagesStyles/technology.module.css"
+import content from '../data/technology.json'
+import { useState } from "react"
+import Image from 'next/image'
+import useWindowDimensions from "../components/Header/useWindowDimensions"
+
+const Technology = () => {
+  const [active, setActive] = useState(0);
+  const [animate, setAnimate] = useState(false);
+  const { width, height } = useWindowDimensions();
+
+  const animateChangingData = (index) => {
+    setAnimate(true);
+    setTimeout(() => { setActive(index); setAnimate(false); }, 500);
+  }
   return (
-    <div className="container">
-
-      <main>
-        <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+    <>
+      <div className={style.main__background} alt="background"></div>
+      <div className={style.content}>
+        <h1 className={destination.heading}>
+          <span className={destination.heading__number}>03</span>
+          <span className={destination.heading__text}>SPACE LAUNCH 101</span>
         </h1>
-
-        <p className="description">
-          Get started by editing <code>pages/destination.js</code>
-        </p>
-
-      </main>
-
-
-
-      <style jsx>{`
-        .container {
-          min-height: 100vh;
-          padding: 0 0.5rem;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        main {
-          padding: 5rem 0;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer {
-          width: 100%;
-          height: 100px;
-          border-top: 1px solid #eaeaea;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer img {
-          margin-left: 0.5rem;
-        }
-
-        footer a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
-
-        .title a {
-          color: #0070f3;
-          text-decoration: none;
-        }
-
-        .title a:hover,
-        .title a:focus,
-        .title a:active {
-          text-decoration: underline;
-        }
-
-        .title {
-          margin: 0;
-          line-height: 1.15;
-          font-size: 4rem;
-        }
-
-        .title,
-        .description {
-          text-align: center;
-        }
-
-        .description {
-          line-height: 1.5;
-          font-size: 1.5rem;
-        }
-
-        code {
-          background: #fafafa;
-          border-radius: 5px;
-          padding: 0.75rem;
-          font-size: 1.1rem;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-        }
-
-        .grid {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-wrap: wrap;
-
-          max-width: 800px;
-          margin-top: 3rem;
-        }
-
-        .card {
-          margin: 1rem;
-          flex-basis: 45%;
-          padding: 1.5rem;
-          text-align: left;
-          color: inherit;
-          text-decoration: none;
-          border: 1px solid #eaeaea;
-          border-radius: 10px;
-          transition: color 0.15s ease, border-color 0.15s ease;
-        }
-
-        .card:hover,
-        .card:focus,
-        .card:active {
-          color: #0070f3;
-          border-color: #0070f3;
-        }
-
-        .card h3 {
-          margin: 0 0 1rem 0;
-          font-size: 1.5rem;
-        }
-
-        .card p {
-          margin: 0;
-          font-size: 1.25rem;
-          line-height: 1.5;
-        }
-
-        .logo {
-          height: 1em;
-        }
-
-        @media (max-width: 600px) {
-          .grid {
-            width: 100%;
-            flex-direction: column;
-          }
-        }
-      `}</style>
-
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
-        }
-
-        * {
-          box-sizing: border-box;
-        }
-      `}</style>
-    </div>
+        <section className={style.content__left}>
+          <div className={style.content__left__selector}>
+            {[1, 2, 3].map(item =>
+              <button key={item} onClick={() => animateChangingData(item - 1)} className={(item - 1) === active ? style.content__left__selector__active : ""}>{item}</button>)}
+          </div>
+          <div className={style.content__left__info__handler}>
+            <div className={style.content__left__info}>
+              THE TERMINOLOGY…
+            </div>
+            <div className={style.content__left__name} style={{ opacity: animate && "0" }}>
+              {content[active].name}
+            </div>
+            <p className={style.content__left__desc} style={{ opacity: animate && "0" }}>
+              {content[active].description}
+            </p>
+          </div>
+        </section>
+        <section className={style.content__right} style={{ opacity: animate && "0" }}>
+          {content.map((item, i) => <Image
+            className={`${i !== active ? style.opacity__0 : ""} ${style.content__right__portrait}`}
+            key={i}
+            src={item.images.portrait}
+            alt="project"
+            layout="fill"
+            priority={true}
+          />)}
+          {content.map((item, i) => <Image
+            className={`${i !== active ? style.opacity__0 : ""} ${style.content__right__landscape}`}
+            key={i}
+            src={item.images.landscape}
+            alt="project"
+            layout="fill"
+            priority={true}
+          />)}
+        </section>
+      </div>
+    </>
   )
 }
+
+
+export default Technology;

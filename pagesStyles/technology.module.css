@@ -1,0 +1,242 @@
+.content {
+    position: relative;
+    color: white;
+    margin-top: 76px;
+    display: flex;
+}
+
+.main__background {
+    top: 0;
+    left: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-image: url("/assets/technology/background-technology-desktop.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.content__left__name, .content__left__desc, .content__right {
+    transition: opacity .4s ease;
+}
+
+.content__right>div {
+    position: absolute !important;
+    object-fit: contain;
+    width: 100% !important;
+    height: unset;
+}
+
+.opacity__0 {
+    opacity: 0;
+}
+
+.content__left {
+    display: flex;
+    flex: 1;
+    margin-top: 171px;
+    margin-left: 165px;
+}
+
+.content__left__info {
+    font-family: "Barlow Condensed";
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #D0D6F9;
+    font-size: 16px;
+    letter-spacing: 2.7px;
+    margin-bottom: 11px;
+}
+
+.content__left__name {
+    font-family: "Bellefair";
+    font-weight: 400;
+    font-size: 56px;
+    margin-bottom: 17px;
+    text-transform: uppercase;
+}
+
+.content__left__desc {
+    font-family: "Barlow";
+    font-weight: 400;
+    color: #D0D6F9;
+    line-height: 32px;
+    font-size: 18px;
+    width: 444px;
+}
+
+.content__left__info__handler {}
+
+.content__right {
+    margin-top: 60px;
+    transition: opacity .5s;
+    position: relative;
+    width: 515px;
+    height: 527px;
+}
+
+.content__left__selector {
+    position: relative;
+    margin-right: 80px;
+}
+
+.content__left__selector>button::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translate3d(-50%, 50%, 0) scale(1.01);
+    bottom: 50%;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    z-index: -1;
+    background-color: white;
+    transition: transform .4s ease;
+}
+
+.content__left__selector>button {
+    font-size: 32px;
+    font-family: "Bellefair";
+    font-weight: 400;
+    position: relative;
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0B0D17;
+    transition: background-color .4s ease, color .4s ease;
+    margin-bottom: 32px;
+}
+
+.content__left__selector>button:last-child {
+    margin-bottom: 0px;
+}
+
+.content__left__selector>button:hover::after {
+    transform: translate3d(-50%, 50%, 0) scale(1.03);
+}
+
+.content__left__selector__active {
+    background-color: white !important;
+    color: #0B0D17 !important;
+}
+
+@media screen and (max-width: 1314px) {
+    .content__left {
+        margin-left: 20px;
+    }
+    .content__left__desc {
+        width: inherit;
+        max-width: 444px;
+    }
+}
+
+@media screen and (min-width: 978px) {
+    .content__right__landscape {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 978px) {
+    .main__background {
+        background-image: url("/assets/technology/background-technology-tablet.jpg");
+    }
+    .content {
+        flex-direction: column-reverse;
+        align-items: center;
+        margin-top: 40px;
+    }
+    .content__right__portrait {
+        display: none !important;
+    }
+    .content__right__landscape {
+        display: block;
+    }
+    .content__right {
+        width: 100vw;
+        height: 310px;
+        margin-top: 84px;
+    }
+    .content__left {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 56px;
+        margin-left: 0;
+    }
+    .content__left__selector>button {
+        font-size: 24px;
+        width: 60px;
+        height: 60px;
+        margin-bottom: 0px;
+    }
+    .content__left__selector>button {
+        margin-right: 16px;
+    }
+    .content__left__selector>button:last-child {
+        margin-right: 0px;
+    }
+    .content__left__selector {
+        margin-right: 0px;
+        display: flex;
+        margin-bottom: 44px;
+    }
+    .content__left__info, .content__left__name, .content__left__desc {
+        text-align: center;
+    }
+    .content__left__info, .content__left__name {
+        margin-bottom: 16px;
+    }
+    .content__left__name {
+        font-size: 40px;
+    }
+    .content__left__desc {
+        max-width: 458px;
+        line-height: 28px;
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .main__background {
+        background-image: url("/assets/technology/background-technology-mobile.jpg");
+    }
+    .content {
+        margin-top: 20px;
+    }
+    .content__left {
+        margin-top: 34px;
+    }
+    .content__right {
+        margin-top: 51px;
+    }
+    .content__left__selector>button {
+        font-size: 16px;
+        width: 40px;
+        height: 40px;
+    }
+    .content__left__selector {
+        margin-bottom: 26px;
+    }
+    .content__right {
+        width: 100vw;
+        height: 170px;
+    }
+    .content__left__info {
+        font-size: 14px;
+        margin-bottom: 9px;
+    }
+    .content__left__name {
+        font-size: 24px;
+        margin-bottom: 16px;
+    }
+    .content__left__desc {
+        max-width: 327px;
+        line-height: 25px;
+        font-size: 15px;
+    }
+}

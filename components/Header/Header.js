@@ -17,18 +17,25 @@ const Header = () => {
         Array.from(navRef.current.children).forEach(element => {
             if (!element.className.includes("is__active")) return;
             if (width < 480) {
-                navRef.current.children[navRef.current.children.length - 1].style.top = `${element.offsetTop - 4}px`;
-                navRef.current.children[navRef.current.children.length - 1].style.left = "inherit";
-                navRef.current.children[navRef.current.children.length - 1].style.right = "0";
-                navRef.current.children[navRef.current.children.length - 1].style.width = "4px";
+                //timeOut to prevent html not finish loaded
+                setTimeout(() => {
+                    navRef.current.children[navRef.current.children.length - 1].style.top = `${element.offsetTop - 4}px`;
+                    navRef.current.children[navRef.current.children.length - 1].style.left = "inherit";
+                    navRef.current.children[navRef.current.children.length - 1].style.right = "0";
+                    navRef.current.children[navRef.current.children.length - 1].style.width = "4px";
+                }, 100);
             } else {
-                navRef.current.children[navRef.current.children.length - 1].style.right = "inherit";
-                navRef.current.children[navRef.current.children.length - 1].style.left = `${element.offsetLeft}px`;
-                navRef.current.children[navRef.current.children.length - 1].style.width = `${element.offsetWidth}px`
-                navRef.current.children[navRef.current.children.length - 1].style.top = "inherit"
+                //timeOut to prevent html not finish loaded
+                setTimeout(() => {
+                    navRef.current.children[navRef.current.children.length - 1].style.right = "inherit";
+                    navRef.current.children[navRef.current.children.length - 1].style.left = `${element.offsetLeft}px`;
+                    navRef.current.children[navRef.current.children.length - 1].style.width = `${element.offsetWidth}px`
+                    navRef.current.children[navRef.current.children.length - 1].style.top = "inherit"
+                }, 100);
+
             }
         });
-    }, [navRef, router, width])
+    }, [navRef, router, width, height])
 
     return (
         <header className={style.header}>

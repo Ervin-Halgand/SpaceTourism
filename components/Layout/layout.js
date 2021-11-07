@@ -8,13 +8,12 @@ const Layout = ({ children }) => {
     const [displayChildren, setDisplayChildren] = useState(children);
     const [transitionStage, setTransitionStage] = useState("fadeOut");
     const router = useRouter();
-    console.log();
-    useEffect(() => {
+    /* useEffect(() => {
         setTransitionStage("fadeIn");
     }, []);
     useEffect(() => {
         if (children !== displayChildren) setTransitionStage("fadeOut");
-    }, [children, setDisplayChildren, displayChildren]);
+    }, [children, setDisplayChildren, displayChildren]); */
     return (
         <>
             <Head>
@@ -25,13 +24,8 @@ const Layout = ({ children }) => {
                 <link href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Bellefair&display=swap" rel="stylesheet" />
             </Head>
             <Header />
-            <main onTransitionEnd={() => {
-                if (transitionStage === "fadeOut") {
-                    setDisplayChildren(children);
-                    setTransitionStage("fadeIn");
-                }
-            }}
-                className={`${style.content} ${style[transitionStage]}`}>{displayChildren}</main>
+            <main 
+                className={`${style.content}`}>{children}</main>
             <style jsx global>{`
             html,
             body {

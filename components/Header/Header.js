@@ -11,7 +11,7 @@ const Header = () => {
     const navRef = useRef();
     const [isOpen, setIsOpen] = useState(false);
     const { width, height } = useWindowDimensions();
-
+    console.log(router);
     useEffect(() => {
         if (!navRef || !width) return;
         Array.from(navRef.current.children).forEach(element => {

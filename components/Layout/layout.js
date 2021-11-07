@@ -8,13 +8,9 @@ const Layout = ({ children }) => {
     const [displayChildren, setDisplayChildren] = useState(children);
     const [transitionStage, setTransitionStage] = useState("fadeOut");
     const router = useRouter();
-    console.log();
-    useEffect(() => {
-        setTransitionStage("fadeIn");
-    }, []);
-    useEffect(() => {
-        if (children !== displayChildren) setTransitionStage("fadeOut");
-    }, [children, setDisplayChildren, displayChildren]);
+    useEffect(() => setTransitionStage("fadeIn"), []);
+    useEffect(() => (children !== displayChildren) && setTransitionStage("fadeOut"), [children, setDisplayChildren, displayChildren]);
+
     return (
         <>
             <Head>
@@ -32,6 +28,7 @@ const Layout = ({ children }) => {
                 }
             }}
                 className={`${style.content} ${style[transitionStage]}`}>{displayChildren}</main>
+            <script> </script>
             <style jsx global>{`
             html,
             body {

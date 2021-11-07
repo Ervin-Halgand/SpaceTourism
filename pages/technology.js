@@ -1,11 +1,9 @@
 import destination from "../pagesStyles/destination.module.css"
 import style from "../pagesStyles/technology.module.css"
-import content from '../lib/data/technology.json'
 import { useState } from "react"
 import Image from 'next/image'
-import useWindowDimensions from "../components/Header/useWindowDimensions"
 
-const Technology = () => {
+const Technology = ({ content }) => {
   const [active, setActive] = useState(0);
   const [animate, setAnimate] = useState(false);
 
@@ -63,3 +61,8 @@ const Technology = () => {
 
 
 export default Technology;
+
+export async function getStaticProps() {
+  const content = await import('../lib/data/technology.json');
+  return { props: { content: content.default } }
+}

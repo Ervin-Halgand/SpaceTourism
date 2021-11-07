@@ -1,9 +1,8 @@
-import content from '../lib/data/destination.json';
 import style from '../pagesStyles/destination.module.css'
 import Image from 'next/image'
 import { useState } from 'react';
 
-const Destination = () => {
+const Destination = ({ content }) => {
   const [activePlanete, setActivePlanete] = useState("Moon");
   const [animate, setAnimate] = useState(false);
   const animateChangingData = (name) => {
@@ -58,3 +57,8 @@ const Destination = () => {
 }
 
 export default Destination;
+
+export async function getStaticProps() {
+  const content = await import('../lib/data/destination.json');
+  return { props: { content: content.default } }
+}

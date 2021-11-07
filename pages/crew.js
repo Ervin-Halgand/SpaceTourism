@@ -1,10 +1,9 @@
 import destination from "../pagesStyles/destination.module.css"
 import style from "../pagesStyles/crew.module.css"
-import content from "../lib/data/crew.json"
 import Image from 'next/image'
 import { useState } from "react"
 
-const Crew = () => {
+const Crew = ({ content }) => {
   const [activeName, setActiveName] = useState(0);
   const [animate, setAnimate] = useState(false);
   const [touchStart, setTouchStart] = useState(0);
@@ -75,3 +74,8 @@ const Crew = () => {
   )
 }
 export default Crew;
+
+export async function getStaticProps() {
+  const content = await import('../lib/data/crew.json');
+  return { props: { content: content.default } }
+}

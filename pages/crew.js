@@ -1,6 +1,6 @@
 import destination from "../pagesStyles/destination.module.css"
 import style from "../pagesStyles/crew.module.css"
-import content from "../data/crew.json"
+import content from "../lib/data/crew.json"
 import Image from 'next/image'
 import { useState } from "react"
 

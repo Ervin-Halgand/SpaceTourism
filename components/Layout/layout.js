@@ -2,10 +2,13 @@ import Header from "../Header/Header";
 import Head from 'next/head'
 import { useState, useEffect } from "react"
 import style from './layout.module.css'
+import { useRouter } from 'next/router'
 
 const Layout = ({ children }) => {
     const [displayChildren, setDisplayChildren] = useState(children);
     const [transitionStage, setTransitionStage] = useState("fadeOut");
+    const router = useRouter();
+    console.log();
     useEffect(() => {
         setTransitionStage("fadeIn");
     }, []);
@@ -15,7 +18,7 @@ const Layout = ({ children }) => {
     return (
         <>
             <Head>
-                <title>Space</title>
+                <title>Space tourism - {router.pathname.split('/')[1] ? router.pathname.split('/')[1] : "home"}</title>
                 <link rel="icon" href="/favicon.ico" />
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />

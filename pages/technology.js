@@ -1,6 +1,6 @@
 import destination from "../pagesStyles/destination.module.css"
 import style from "../pagesStyles/technology.module.css"
-import content from '../data/technology.json'
+import content from '../lib/data/technology.json'
 import { useState } from "react"
 import Image from 'next/image'
 import useWindowDimensions from "../components/Header/useWindowDimensions"
@@ -8,7 +8,6 @@ import useWindowDimensions from "../components/Header/useWindowDimensions"
 const Technology = () => {
   const [active, setActive] = useState(0);
   const [animate, setAnimate] = useState(false);
-  const { width, height } = useWindowDimensions();
 
   const animateChangingData = (index) => {
     setAnimate(true);

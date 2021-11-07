@@ -1,4 +1,4 @@
-import content from '../data/destination.json';
+import content from '../lib/data/destination.json';
 import style from '../pagesStyles/destination.module.css'
 import Image from 'next/image'
 import { useState } from 'react';

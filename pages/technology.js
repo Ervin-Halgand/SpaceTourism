@@ -6,6 +6,23 @@ import Image from 'next/image'
 const Technology = ({ content }) => {
   const [active, setActive] = useState(0);
   const [animate, setAnimate] = useState(false);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+
+  const handleTouchEnd = () => {
+    if (touchStart - touchEnd > 75) {
+      if (active === 2)
+        animateChangingData(0);
+      else
+        animateChangingData(active + 1);
+    }
+    if (touchStart - touchEnd < 75) {
+      if (active === 0)
+        animateChangingData(2);
+      else
+        animateChangingData(active - 1);
+    }
+  }
 
   const animateChangingData = (index) => {
     setAnimate(true);
@@ -36,7 +53,10 @@ const Technology = ({ content }) => {
             </p>
           </div>
         </section>
-        <section className={style.content__right} style={{ opacity: animate && "0" }}>
+        <section className={style.content__right} style={{ opacity: animate && "0" }}
+          onTouchStart={e => setTouchStart(e.targetTouches[0].clientX)}
+          onTouchMove={e => setTouchEnd(e.targetTouches[0].clientX)}
+          onTouchEnd={() => handleTouchEnd()}>
           {content.map((item, i) => <Image
             className={`${i !== active ? style.opacity__0 : ""} ${style.content__right__portrait}`}
             key={i}

@@ -1,6 +1,5 @@
 import destination from "../pagesStyles/destination.module.css"
 import style from "../pagesStyles/crew.module.css"
-import Image from 'next/image'
 import { useState } from "react"
 
 const Crew = ({ content }) => {
@@ -10,16 +9,16 @@ const Crew = ({ content }) => {
   const [touchEnd, setTouchEnd] = useState(0);
   const handleTouchEnd = () => {
     if (touchStart - touchEnd > 50) {
-      if (activeName === 0)
-        animateChangingData(3);
-      else
-        animateChangingData(activeName - 1);
-    }
-    if (touchStart - touchEnd < 50) {
       if (activeName === 3)
         animateChangingData(0);
       else
         animateChangingData(activeName + 1);
+    }
+    if (touchStart - touchEnd < 50) {
+      if (activeName === 0)
+        animateChangingData(3);
+      else
+        animateChangingData(activeName - 1);
     }
   }
   const animateChangingData = (i) => {
@@ -51,21 +50,6 @@ const Crew = ({ content }) => {
               onTouchEnd={() => handleTouchEnd()}
               style={{ opacity: animate && "0" }} className={`${style.content__right} ${style.content__right__image}`}>
               <img src={content[activeName].images.webp} />
-              {/* <Image
-              src=""
-              alt="planete"
-              layout="responsive"
-              priority={true}
-            /> */}
-              {/* {content.map((item, i) => <Image
-              className={item.name !== activePlanete ? style.opacity__0 : ""}
-              key={i}
-              src={item.images.webp}
-              alt="planete"
-              width={445}
-              height={445}
-              priority={true}
-            />)} */}
             </section>
           </div>
         </div>

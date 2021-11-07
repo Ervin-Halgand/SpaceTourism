@@ -82,12 +82,14 @@
     transition: opacity .4s ease;
 }
 
-.content__left__selector__button:hover {
-    opacity: .5001;
-}
-
 .content__left__selector__button__active, .content__left__selector__button__active:hover {
     opacity: 1;
+}
+
+@media screen and (min-width: 1292px) {
+    .content__left__selector__button:hover {
+        opacity: .5001;
+    }
 }
 
 @media screen and (max-width: 1292px) {

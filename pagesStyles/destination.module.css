@@ -157,10 +157,6 @@
     transition: opacity .5s;
 }
 
-.content__right__selector>button:hover::before {
-    opacity: 1;
-}
-
 @media screen and (max-width: 978px) {
     .main__background {
         background-image: url("/assets/destination/background-destination-tablet.jpg");
@@ -215,7 +211,11 @@
         margin-bottom: 28px;
     }
 }
-
+@media screen and (min-width: 978px) {
+    .content__right__selector>button:hover::before {
+        opacity: 1;
+    }
+}
 @media screen and (max-width: 480px) {
     .main__background {
         background-image: url("/assets/destination/background-destination-mobile.jpg");

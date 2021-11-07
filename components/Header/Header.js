@@ -67,16 +67,16 @@ const Header = () => {
             </button>
             <nav className={style.nav} ref={navRef} style={{ transform: (isOpen && width < 480) && "translate3d(0,0,0)" }}>
                 <Link href="/">
-                    <a className={router.pathname === "/" ? style.is__active : ""}><span>00</span>home</a>
+                    <a onClick={() => setIsOpen(false)} className={router.pathname === "/" ? style.is__active : ""}><span>00</span>home</a>
                 </Link>
                 <Link href="/destination">
-                    <a className={router.pathname === "/destination" ? style.is__active : ""}><span>01</span>destination</a>
+                    <a onClick={() => setIsOpen(false)} className={router.pathname === "/destination" ? style.is__active : ""}><span>01</span>destination</a>
                 </Link>
                 <Link href="/crew">
-                    <a className={router.pathname === "/crew" ? style.is__active : ""}><span>02</span>crew</a>
+                    <a onClick={() => setIsOpen(false)} className={router.pathname === "/crew" ? style.is__active : ""}><span>02</span>crew</a>
                 </Link>
                 <Link href="/technology">
-                    <a className={router.pathname === "/technology" ? style.is__active : ""}><span>03</span>technology</a>
+                    <a onClick={() => setIsOpen(false)} className={router.pathname === "/technology" ? style.is__active : ""}><span>03</span>technology</a>
                 </Link>
                 <span className={style.nav__indicator}></span>
             </nav>

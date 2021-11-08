@@ -13,11 +13,9 @@ const Header = () => {
     const { width, height } = useWindowDimensions();
 
     useEffect(() => {
-        console.log(router);
         if (router.asPath !== "/" && router.asPath !== "/destination" && router.asPath !== "/crew" && router.asPath !== "/technology")
-            router.push("/").then();
-
-    }, [])
+            router.replace("/");
+    }, [router])
     useEffect(() => {
         if (!navRef || !width) return;
         Array.from(navRef.current.children).forEach(element => {

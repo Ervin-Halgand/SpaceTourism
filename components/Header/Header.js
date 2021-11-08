@@ -44,6 +44,7 @@ const Header = () => {
     return (
         <header className={style.header}>
             <Image
+                onClick={() => { router.replace("/") }}
                 className={style.logo}
                 src="/assets/shared/logo.svg"
                 width="48"

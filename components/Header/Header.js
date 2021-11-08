@@ -10,10 +10,12 @@ const Header = () => {
     const router = useRouter();
     const navRef = useRef();
     const [isOpen, setIsOpen] = useState(false);
+    const [needToReload, setNeedToReload] = useState(false);
     const { width, height } = useWindowDimensions();
+
     useEffect(() => {
-        if (router.query)
-        router.replace('/');
+        if (router.asPath !== "/" && router.asPath !== "/destination" && router.asPath !== "/crew" && router.asPath !== "/technology")
+            router.push("/").then(() => router.reload());
     }, [])
     useEffect(() => {
         if (!navRef || !width) return;

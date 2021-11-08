@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
     const [displayChildren, setDisplayChildren] = useState(children);
     const [transitionStage, setTransitionStage] = useState("fadeOut");
     const router = useRouter();
-    useEffect(() => setTransitionStage("fadeIn"), []);
+    useEffect(() => setTransitionStage("fadeIn"), [transitionStage]);
     useEffect(() => (children !== displayChildren) && setTransitionStage("fadeOut"), [children, setDisplayChildren, displayChildren]);
 
     return (

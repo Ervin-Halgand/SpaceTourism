@@ -13,10 +13,10 @@ const Layout = ({ children }) => {
     useEffect(() => {
         console.log("transition");
         console.log(transitionStage);
-        console.log("transition");
-        console.log(router);
-        if (transitionStage === "fadeOut")
+        if (transitionStage === "fadeOut") {
+            setDisplayChildren(children);
             setTransitionStage("fadeIn");
+        }
     }, [children, displayChildren])
 
     return (
